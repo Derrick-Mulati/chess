@@ -1,5 +1,5 @@
 import pygame
-import chess_game
+import chessgame
 import chess.engine
 
 # Initialize Pygame
@@ -11,7 +11,7 @@ screen = pygame.display.set_mode((width, height))
 pygame.display.set_caption('Chess with Computer')
 
 # Load chess engine
-engine = chess_game.engine.SimpleEngine.popen_uci("path_to_your_chess_engine")
+engine = chessgame.engine.SimpleEngine.popen_uci("path_to_your_chess_engine")
 
 # Load images for pieces
 pieces = {}
@@ -28,7 +28,7 @@ def draw_board(board):
             color = colors[(row + col) % 2]
             pygame.draw.rect(screen, color, pygame.Rect(col * square_size, row * square_size, square_size, square_size))
             
-            piece = board.piece_at(chess_game.square(col, 7 - row))
+            piece = board.piece_at(chessgame.square(col, 7 - row))
             if piece:
                 screen.blit(pieces[piece.symbol()], pygame.Rect(col * square_size, row * square_size, square_size, square_size))
 
@@ -36,16 +36,16 @@ def draw_board(board):
 def get_square_under_mouse():
     mouse_pos = pygame.Vector2(pygame.mouse.get_pos())
     x, y = [int(v // (width / 8)) for v in mouse_pos]
-    return chess_game.square(x, 7 - y)
+    return chessgame.square(x, 7 - y)
 
 # Function to handle clicks and move pieces
 def handle_clicks(board, selected_square):
     square = get_square_under_mouse()
     if selected_square is None:
-        if board.piece_at(square) and board.color_at(square) == chess_game.WHITE:
+        if board.piece_at(square) and board.color_at(square) == chessgame.WHITE:
             return square
     else:
-        move = chess_game.Move(selected_square, square)
+        move = chessgame.Move(selected_square, square)
         if move in board.legal_moves:
             board.push(move)
             return None
@@ -54,13 +54,13 @@ def handle_clicks(board, selected_square):
 
 # Function to play against the computer
 def play_against_computer(board, engine):
-    if board.turn == chess_game.BLACK:  # Computer's turn
-        result = engine.play(board, chess_game.engine.Limit(time=1.0))
+    if board.turn == chessgame.BLACK:  # Computer's turn
+        result = engine.play(board, chessgame.engine.Limit(time=1.0))
         board.push(result.move)
 
 # Main game loop
 def main():
-    board = chess_game.Board()
+    board = chessgame.Board()
     running = True
     selected_square = None
 
@@ -68,10 +68,10 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
-            elif event.type == pygame.MOUSEBUTTONDOWN and board.turn == chess_game.WHITE:
+            elif event.type == pygame.MOUSEBUTTONDOWN and board.turn == chessgame.WHITE:
                 selected_square = handle_clicks(board, selected_square)
 
-        if board.turn == chess_game.BLACK:
+        if board.turn == chessgame.BLACK:
             play_against_computer(board, engine)
 
         draw_board(board)
