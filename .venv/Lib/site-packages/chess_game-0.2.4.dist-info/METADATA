@@ -1,0 +1,33 @@
+Metadata-Version: 2.1
+Name: chess-game
+Version: 0.2.4
+Summary: A simple chess library
+Home-page: https://github.com/Utkrisht-1997/chess-game
+Author: Utkrisht Sinha
+Author-email: 
+License: GPL-3.0+
+Download-URL: https://github.com/Utkrisht-1997/chess-game/archive/refs/tags/v_024.tar.gz
+Keywords: chess,game,python
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: colorama
+
+# Chess-Game
+A simple chess game in Python
+## Installation
+```sh
+pip install chess-game
+```
+
+
